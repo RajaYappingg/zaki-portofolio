@@ -5,19 +5,20 @@ import { gsap } from 'gsap';
 
 const projects = [
     {
-        title: "Finance Dashboard Pro",
-        description: "A high-performance financial analytics dashboard handling real-time data visualization. Features include customizable widgets, dark mode, and export capabilities.",
-        tags: ["React", "TypeScript", "D3.js", "Tailwind"],
+        title: "Skanida Apps Mobile",
+        description: "Mobile application for student online presence using camera and location services. Streamlines attendance tracking with geospatial verification.",
+        tags: ["React Native", "Expo", "Geolocation", "Camera API"],
         link: "#",
-        github: "#",
+        github: "https://github.com/RajaYappingg/skanida-apps-mobile",
         featured: true,
         borderColor: '#4F46E5', // Indigo
         gradient: 'linear-gradient(145deg, #1e1b4b, #000)', // Dark Indigo to Black
+        image: "/skanida-preview.png"
     },
     {
-        title: "AI Content Generator",
-        description: "SaaS platform leveraging OpenAI's GPT-4 for automated content creation. Built with a focus on intuitive UX and seamless API integration.",
-        tags: ["Next.js", "OpenAI API", "PostgreSQL", "Stripe"],
+        title: "Coming Soon",
+        description: "Exciting new project currently in development. Stay tuned for updates!",
+        tags: ["In Progress"],
         link: "#",
         github: "#",
         featured: false,
@@ -25,9 +26,9 @@ const projects = [
         gradient: 'linear-gradient(145deg, #064e3b, #000)', // Dark Emerald to Black
     },
     {
-        title: "3D Product Configurator",
-        description: "Interactive 3D experience allowing users to customize product colors and materials in real-time. Optimized for performance across devices.",
-        tags: ["React Three Fiber", "WebGL", "Zustand"],
+        title: "Coming Soon",
+        description: "Something amazing is being built. Check back later!",
+        tags: ["Planning"],
         link: "#",
         github: "#",
         featured: false,
@@ -153,9 +154,17 @@ const Projects = () => {
 
                             {/* Project Preview Area */}
                             <div className="aspect-video bg-neutral-900/50 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 border-b border-white/5">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="text-white/20 text-lg font-medium tracking-widest uppercase">Preview</span>
-                                </div>
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <span className="text-white/20 text-lg font-medium tracking-widest uppercase">Preview</span>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="p-8 flex flex-col flex-grow relative z-10">

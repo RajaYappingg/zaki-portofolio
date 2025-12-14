@@ -18,6 +18,7 @@ import {
     SheetClose
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
+import { NAV_ITEMS, SITE_CONFIG } from '../constants';
 
 const Navbar = () => {
     return (
@@ -28,20 +29,14 @@ const Navbar = () => {
                     <div className="flex-shrink-0">
                         <a href="#" className="flex items-center gap-2 text-indigo-400 font-bold text-xl">
                             <Zap className="h-6 w-6" />
-                            <span>Zaki.dev</span>
+                            <span>{SITE_CONFIG.NAME}</span>
                         </a>
                     </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block h-full flex items-center">
                         <GooeyNav
-                            items={[
-                                { label: 'Home', href: '/' },
-                                { label: 'Projects', href: '/projects' },
-                                { label: 'Skills', href: '/skills' },
-                                { label: 'About', href: '/about' },
-                                { label: 'Contact', href: '/contact' },
-                            ]}
+                            items={NAV_ITEMS}
                         />
                     </div>
 
@@ -68,13 +63,13 @@ const Navbar = () => {
                                     </SheetTitle>
                                 </SheetHeader>
                                 <div className="flex flex-col gap-4 mt-8">
-                                    {['Home', 'Projects', 'Skills', 'About', 'Contact'].map((item) => (
-                                        <SheetClose key={item} asChild>
+                                    {NAV_ITEMS.map((item) => (
+                                        <SheetClose key={item.label} asChild>
                                             <Link
-                                                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                                                to={item.href}
                                                 className="text-lg font-medium text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-md transition-colors"
                                             >
-                                                {item}
+                                                {item.label}
                                             </Link>
                                         </SheetClose>
                                     ))}

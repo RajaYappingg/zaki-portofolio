@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileCard from './ProfileCard';
 import { motion } from 'framer-motion';
 import { Code, Layout, Zap, Smartphone, CheckCircle, Database, Server, PenTool, GitBranch, Terminal } from 'lucide-react';
 
@@ -15,18 +16,7 @@ const skillCategories = [
             { name: "WebGL / Three.js", level: "Intermediate" }
         ]
     },
-    {
-        title: "Backend & Tools",
-        description: "Solid foundation in server-side logic and developer tooling.",
-        skills: [
-            { name: "Node.js", level: "Intermediate" },
-            { name: "PostgreSQL", level: "Intermediate" },
-            { name: "Git & GitHub", level: "Advanced" },
-            { name: "Vite / Webpack", level: "Advanced" },
-            { name: "Firebase", level: "Intermediate" },
-            { name: "Docker", level: "Basic" }
-        ]
-    },
+
     {
         title: "Design & Architecture",
         description: "Bridging the gap between engineering and design.",
@@ -58,16 +48,12 @@ const Skills = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {skillCategories.map((category, index) => (
-                    <motion.div
+                    <ProfileCard
                         key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 + 0.2 }}
-                        className="bg-black border border-white/10 rounded-2xl p-8 hover:bg-neutral-900 transition-colors duration-300 relative z-10"
+                        title={category.title}
+                        description={category.description}
+                        delay={index * 0.1 + 0.2}
                     >
-                        <h3 className="text-2xl font-bold text-white mb-3">{category.title}</h3>
-                        <p className="text-gray-400 mb-8 h-12">{category.description}</p>
-
                         <div className="space-y-4">
                             {category.skills.map((skill, i) => (
                                 <div key={i} className="flex items-center justify-between group">
@@ -78,7 +64,7 @@ const Skills = () => {
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </ProfileCard>
                 ))}
             </div>
 

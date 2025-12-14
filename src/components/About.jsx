@@ -3,11 +3,11 @@ import Stack from './Stack';
 
 const About = () => {
     const images = [
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=500&auto=format", // Coding
-        "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=500&auto=format", // Code screen
-        "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=500&auto=format", // Developer
-        "https://images.unsplash.com/photo-1607705703571-c5a8695f18f6?q=80&w=500&auto=format", // Code typing
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500&auto=format"  // Tech setup
+        "/profile.png", // User Profile
+        "/photo1.jpg",  // Graduation
+        "/photo2.jpg",  // Helmet Kid
+        "/photo3.png",  // Sunglasses Kid
+        "/photo4.jpg"   // Swimming
     ];
 
     const stackCards = images.map((img, i) => (

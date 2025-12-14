@@ -1,13 +1,15 @@
 import React from 'react';
-import { Mail, Github, Linkedin, Twitter, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, MapPin, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import BounceCards from './BounceCards';
+
+import { SOCIAL_LINKS } from '../constants';
 
 const Contact = () => {
     // Social Cards Content
     const socialCards = [
         (
-            <a href="https://github.com/RajaYappingg" target="_blank" rel="noopener noreferrer" key="github" className="block w-full h-full bg-[#181717] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href={SOCIAL_LINKS.GITHUB} target="_blank" rel="noopener noreferrer" key="github" className="block w-full h-full bg-[#181717] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
@@ -20,7 +22,7 @@ const Contact = () => {
             </a>
         ),
         (
-            <a href="https://www.linkedin.com/in/zakirio" target="_blank" rel="noopener noreferrer" key="linkedin" className="block w-full h-full bg-[#0077b5] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href={SOCIAL_LINKS.LINKEDIN} target="_blank" rel="noopener noreferrer" key="linkedin" className="block w-full h-full bg-[#0077b5] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
@@ -33,14 +35,14 @@ const Contact = () => {
             </a>
         ),
         (
-            <a href="https://twitter.com/Zaki_Rio" target="_blank" rel="noopener noreferrer" key="twitter" className="block w-full h-full bg-black flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href={SOCIAL_LINKS.INSTAGRAM} target="_blank" rel="noopener noreferrer" key="instagram" className="block w-full h-full bg-black flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
-                <Twitter className="w-20 h-20 mb-6 text-[#1DA1F2] group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-2xl font-bold mb-2">Twitter</h3>
-                <p className="text-gray-400 text-sm text-center mb-6">Follow my daily thoughts & tech updates.</p>
-                <div className="px-6 py-2 bg-[#1DA1F2] text-white font-semibold rounded-full group-hover:bg-[#1a91da] transition-colors z-10">
+                <Instagram className="w-20 h-20 mb-6 text-[#E1306C] group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl font-bold mb-2">Instagram</h3>
+                <p className="text-gray-400 text-sm text-center mb-6">Follow my visual journey & updates.</p>
+                <div className="px-6 py-2 bg-[#E1306C] text-white font-semibold rounded-full group-hover:bg-[#c13584] transition-colors z-10">
                     Follow
                 </div>
             </a>
@@ -96,7 +98,7 @@ const Contact = () => {
                     className="w-full max-w-md"
                 >
                     <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=jackv3414@gmail.com"
+                        href={SOCIAL_LINKS.EMAIL_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-between p-6 rounded-2xl bg-neutral-900/50 hover:bg-neutral-900 border border-white/10 hover:border-indigo-500/50 transition-all group duration-300 backdrop-blur-sm"
@@ -107,7 +109,7 @@ const Contact = () => {
                             </div>
                             <div className="text-left">
                                 <h3 className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-1">Compose in Gmail</h3>
-                                <span className="text-lg text-white font-semibold">jackv3414@gmail.com</span>
+                                <span className="text-lg text-white font-semibold">{SOCIAL_LINKS.EMAIL}</span>
                             </div>
                         </div>
                         <div className="text-gray-500 group-hover:text-white transition-colors">
