@@ -7,7 +7,7 @@ const Contact = () => {
     // Social Cards Content
     const socialCards = [
         (
-            <a href="#" key="github" className="block w-full h-full bg-[#181717] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href="https://github.com/RajaYappingg" target="_blank" rel="noopener noreferrer" key="github" className="block w-full h-full bg-[#181717] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
@@ -20,7 +20,7 @@ const Contact = () => {
             </a>
         ),
         (
-            <a href="#" key="linkedin" className="block w-full h-full bg-[#0077b5] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href="https://www.linkedin.com/in/zakirio" target="_blank" rel="noopener noreferrer" key="linkedin" className="block w-full h-full bg-[#0077b5] flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
@@ -33,7 +33,7 @@ const Contact = () => {
             </a>
         ),
         (
-            <a href="#" key="twitter" className="block w-full h-full bg-black flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <a href="https://twitter.com/Zaki_Rio" target="_blank" rel="noopener noreferrer" key="twitter" className="block w-full h-full bg-black flex flex-col items-center justify-center p-6 text-white border border-white/10 relative overflow-hidden group hover:scale-105 transition-transform duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                     <ExternalLink className="w-5 h-5" />
                 </div>
