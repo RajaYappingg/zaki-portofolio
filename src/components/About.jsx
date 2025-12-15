@@ -58,15 +58,7 @@ const About = () => {
                             <ul className="space-y-3 text-gray-400">
                                 <li className="flex items-center gap-3">
                                     <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
-                                    <span>Senior Frontend Developer @ Tech Corp (2023-Present)</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                                    <span>Web Developer @ Agency (2021-2023)</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
-                                    <span>Junior Developer @ StartUp (2020-2021)</span>
+                                    <span>Frontend Developer @ Skanida Apps Mobile</span>
                                 </li>
                             </ul>
                         </div>
