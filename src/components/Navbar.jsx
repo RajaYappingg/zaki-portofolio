@@ -1,90 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import GooeyNav from './GooeyNav';
-import { Menu, Zap } from 'lucide-react';
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger,
-    SheetHeader,
-    SheetTitle,
-    SheetClose
-} from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
-import { NAV_ITEMS, SITE_CONFIG } from '../constants';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import PillNav from './PillNav';
+import { NAV_ITEMS } from '../constants';
+import logo from '../assets/react.svg'; // Using React logo as placeholder
 
 const Navbar = () => {
+    const location = useLocation();
+
     return (
-        <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
-                    <div className="flex-shrink-0">
-                        <a href="#" className="flex items-center gap-2 text-indigo-400 font-bold text-xl">
-                            <Zap className="h-6 w-6" />
-                            <span>{SITE_CONFIG.NAME}</span>
-                        </a>
-                    </div>
-
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:block h-full flex items-center">
-                        <GooeyNav
-                            items={NAV_ITEMS}
-                        />
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="hidden md:block">
-                        <Button asChild className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition-all shadow-lg hover:shadow-indigo-500/30">
-                            <Link to="/contact">Hire Me</Link>
-                        </Button>
-                    </div>
-
-                    {/* Mobile Navigation (Sheet) */}
-                    <div className="md:hidden">
-                        <Sheet>
-                            <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-white/10">
-                                    <Menu className="h-6 w-6" />
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent side="right" className="bg-black/95 border-l border-white/10 text-white w-[300px]">
-                                <SheetHeader>
-                                    <SheetTitle className="text-left flex items-center gap-2 text-indigo-400">
-                                        <Zap className="h-5 w-5" />
-                                        Zaki.dev
-                                    </SheetTitle>
-                                </SheetHeader>
-                                <div className="flex flex-col gap-4 mt-8">
-                                    {NAV_ITEMS.map((item) => (
-                                        <SheetClose key={item.label} asChild>
-                                            <Link
-                                                to={item.href}
-                                                className="text-lg font-medium text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-md transition-colors"
-                                            >
-                                                {item.label}
-                                            </Link>
-                                        </SheetClose>
-                                    ))}
-                                    <SheetClose asChild>
-                                        <Button asChild className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white w-full rounded-full">
-                                            <Link to="/contact">Hire Me</Link>
-                                        </Button>
-                                    </SheetClose>
-                                </div>
-                            </SheetContent>
-                        </Sheet>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <PillNav
+            items={NAV_ITEMS}
+            logo={logo}
+            logoAlt="Zaki.dev Logo"
+            activeHref={location.pathname}
+            baseColor="#fff" // The circle color
+            pillColor="#000000" // The pill background
+            pillTextColor="#a5b4fc" // Indigo-300ish for text
+            hoveredPillTextColor="#000" // Text color when hovered (inside white circle)
+        />
     );
 };
 
