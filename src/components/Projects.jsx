@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { gsap } from 'gsap';
+import skanidaPreview from '../assets/skanida-preview.png';
 
 const projects = [
     {
@@ -13,7 +14,7 @@ const projects = [
         featured: true,
         borderColor: '#4F46E5', // Indigo
         gradient: 'linear-gradient(145deg, #1e1b4b, #000)', // Dark Indigo to Black
-        image: "/skanida-preview.png"
+        image: skanidaPreview
     },
     {
         title: "Coming Soon",

@@ -1,13 +1,18 @@
 import React from 'react';
 import Stack from './Stack';
+import profileImg from '../assets/profile.png';
+import photo1 from '../assets/photo1.jpg';
+import photo2 from '../assets/photo2.jpg';
+import photo3 from '../assets/photo3.png';
+import photo4 from '../assets/photo4.jpg';
 
 const About = () => {
     const images = [
-        "/profile.png", // User Profile
-        "/photo1.jpg",  // Graduation
-        "/photo2.jpg",  // Helmet Kid
-        "/photo3.png",  // Sunglasses Kid
-        "/photo4.jpg"   // Swimming
+        profileImg, // User Profile
+        photo1,     // Graduation
+        photo2,     // Helmet Kid
+        photo3,     // Sunglasses Kid
+        photo4      // Swimming
     ];
 
     const stackCards = images.map((img, i) => (
