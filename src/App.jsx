@@ -11,7 +11,7 @@ import FloatingLines from './components/FloatingLines';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/zaki-portofolio">
       <div className="min-h-screen bg-black text-white selection:bg-indigo-500/30 relative">
         <div className="fixed inset-0 z-0 opacity-60">
           <FloatingLines
