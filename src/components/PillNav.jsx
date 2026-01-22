@@ -15,7 +15,8 @@ const PillNav = ({
     hoveredPillTextColor = '#060010',
     pillTextColor,
     onMobileMenuClick,
-    initialLoadAnimation = true
+    initialLoadAnimation = true,
+    hideActiveOnIdle = false
 }) => {
     const resolvedPillTextColor = pillTextColor ?? baseColor;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -89,7 +90,7 @@ const PillNav = ({
             if (navState.type === 'hover') {
                 targetIndex = navState.hoveredIndex !== null ? navState.hoveredIndex : -1;
             } else {
-                targetIndex = getActiveIndex();
+                targetIndex = hideActiveOnIdle ? -1 : getActiveIndex();
             }
 
             // Optimization: Skip if target hasn't changed.
@@ -167,7 +168,7 @@ const PillNav = ({
         }, navRef);
 
         return () => ctx.revert();
-    }, [navState, activeHref, items, ease]);
+    }, [navState, activeHref, items, ease, hideActiveOnIdle]);
 
     // Event Handlers
     const handleNavEnter = () => setNavState(prev => ({ ...prev, type: 'hover' }));
@@ -207,9 +208,11 @@ const PillNav = ({
                 onMouseEnter={handleNavEnter}
                 onMouseLeave={handleNavLeave}
             >
-                <Link className="pill-logo" to="/" onMouseEnter={handleLogoEnter} ref={logoRef}>
-                    <img src={logo} alt={logoAlt} ref={logoImgRef} />
-                </Link>
+                {logo && (
+                    <Link className="pill-logo" to="/" onMouseEnter={handleLogoEnter} ref={logoRef}>
+                        <img src={logo} alt={logoAlt} ref={logoImgRef} />
+                    </Link>
+                )}
                 <div className="pill-nav-items desktop-only" ref={navItemsRef}>
                     <ul className="pill-list">
                         {items.map((item, i) => (
