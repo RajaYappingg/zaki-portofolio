@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback. Karena pakai HashRouter, deep-link sebenarnya
+# selalu pakai "#", jadi ini hanya jaga-jaga jika user mengetik
+# path tanpa hash.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

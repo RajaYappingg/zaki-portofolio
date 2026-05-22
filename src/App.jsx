@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
@@ -11,7 +11,7 @@ import FloatingLines from './components/FloatingLines';
 
 function App() {
   return (
-    <BrowserRouter basename="/zaki-portofolio">
+    <HashRouter>
       <div className="min-h-screen bg-black text-white selection:bg-indigo-500/30 relative">
         <div className="fixed inset-0 z-0 opacity-60">
           <FloatingLines
@@ -35,7 +35,7 @@ function App() {
           <Footer />
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
