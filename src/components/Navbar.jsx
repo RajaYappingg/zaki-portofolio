@@ -17,7 +17,7 @@ const Navbar = () => {
             pillColor="rgba(12, 12, 12, 0.9)" // Black AMOLED background
             pillTextColor="#d4d4d8" // Zinc-300 text
             hoveredPillTextColor="#000000" // Black text when hovered
-            hideActiveOnIdle={true}
+            hideActiveOnIdle={false} // Keep active page indicator visible until page changes
         />
     );
 };

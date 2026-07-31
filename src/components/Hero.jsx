@@ -9,7 +9,7 @@ import SplitText from './SplitText';
 
 const Hero = () => {
     return (
-        <div className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden min-h-[600px] flex items-center justify-center">
+        <div className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden min-h-[600px] flex items-center justify-center">
 
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10 pointer-events-none">
