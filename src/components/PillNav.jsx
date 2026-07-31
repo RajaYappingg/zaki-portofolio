@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
+import { ChevronLeft } from 'lucide-react';
 import './PillNav.css';
 
 const PillNav = ({
@@ -19,6 +22,7 @@ const PillNav = ({
 }) => {
     const resolvedPillTextColor = pillTextColor ?? baseColor;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isNavExpanded, setIsNavExpanded] = useState(false);
 
     // State: 'idle' = active tab; 'hover' = hovered tab.
     const [navState, setNavState] = useState({ type: 'idle', hoveredIndex: null });
@@ -26,21 +30,41 @@ const PillNav = ({
     const navRef = useRef(null);
     const logoRef = useRef(null);
     const logoImgRef = useRef(null);
-    const navItemsRef = useRef(null);
-
     const logoRotationRef = useRef(0);
 
-    const handleLogoEnter = () => {
+    const spinLogo = () => {
         logoRotationRef.current += 360;
         if (logoImgRef.current) {
             gsap.to(logoImgRef.current, {
                 rotate: logoRotationRef.current,
-                duration: 0.75,
-                ease: 'back.out(1.4)',
+                duration: 1.1,
+                ease: 'back.out(1.2)',
                 overwrite: 'auto'
             });
         }
     };
+
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+        spinLogo();
+        setIsNavExpanded(prev => !prev);
+    };
+
+    const handleLogoEnter = () => {
+        if (!isNavExpanded) {
+            spinLogo();
+            setIsNavExpanded(true);
+        }
+    };
+
+    const handleCloseClick = (e) => {
+        e.stopPropagation();
+        spinLogo();
+        setIsNavExpanded(false);
+    };
+
+    const handleItemEnter = (i) => setNavState({ type: 'hover', hoveredIndex: i });
+    const handleItemLeave = () => setNavState(prev => ({ ...prev, hoveredIndex: null }));
 
     // Helper: Normalize
     const normalizePath = (path) => path?.replace(/\/+$/, '') || '/';
@@ -49,23 +73,6 @@ const PillNav = ({
         const currentPath = normalizePath(activeHref);
         return items.findIndex(item => normalizePath(item.href) === currentPath);
     };
-
-    // Event Handlers
-    const handleNavEnter = () => setNavState(prev => ({ ...prev, type: 'hover' }));
-    const handleNavLeave = () => setNavState({ type: 'idle', hoveredIndex: null });
-    const handleItemEnter = (i) => setNavState({ type: 'hover', hoveredIndex: i });
-    const handleItemLeave = () => setNavState(prev => ({ ...prev, hoveredIndex: null }));
-
-    // Initial Load Animation
-    useLayoutEffect(() => {
-        if (initialLoadAnimation) {
-            const ctx = gsap.context(() => {
-                if (logoRef.current) gsap.from(logoRef.current, { scale: 0, duration: 0.6, ease });
-                if (navItemsRef.current) gsap.from(navItemsRef.current, { opacity: 0, scale: 0.95, duration: 0.6, ease });
-            }, navRef);
-            return () => ctx.revert();
-        }
-    }, [initialLoadAnimation]);
 
     const cssVars = {
         ['--base']: baseColor,
@@ -79,26 +86,44 @@ const PillNav = ({
         ? navState.hoveredIndex 
         : (hideActiveOnIdle ? -1 : activeIdx);
 
-    return (
+    const navContent = (
         <div className="pill-nav-container" ref={navRef}>
-            <nav
-                className={`pill-nav ${className}`}
+            <motion.nav
+                className={`pill-nav ${className} ${isNavExpanded ? 'is-expanded' : 'is-collapsed'}`}
                 style={cssVars}
-                onMouseEnter={handleNavEnter}
-                onMouseLeave={handleNavLeave}
+                animate={{
+                    paddingRight: isNavExpanded ? '0.8rem' : '0.45rem'
+                }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             >
                 {logo && (
-                    <Link
-                        className="pill-logo"
-                        to="/"
+                    <a
+                        className="pill-logo cursor-pointer"
+                        href="/"
                         ref={logoRef}
+                        onClick={handleLogoClick}
                         onMouseEnter={handleLogoEnter}
+                        title="Toggle Navigation Menu"
                     >
                         <img src={logo} alt={logoAlt} ref={logoImgRef} />
-                    </Link>
+                    </a>
                 )}
-                <div className="pill-nav-items desktop-only" ref={navItemsRef}>
-                    <ul className="pill-list">
+
+                <motion.div
+                    className="pill-nav-items desktop-only overflow-hidden flex items-center"
+                    initial={false}
+                    animate={{
+                        width: isNavExpanded ? 'auto' : 0,
+                        opacity: isNavExpanded ? 1 : 0,
+                        x: isNavExpanded ? 0 : -20,
+                        scale: isNavExpanded ? 1 : 0.95
+                    }}
+                    transition={{
+                        duration: 0.75,
+                        ease: [0.16, 1, 0.3, 1]
+                    }}
+                >
+                    <ul className="pill-list pl-2 items-center">
                         {items.map((item, i) => {
                             const isHighlighted = (currentHighlightedIdx === i);
                             return (
@@ -114,13 +139,23 @@ const PillNav = ({
                                 </li>
                             );
                         })}
+                        <li>
+                            <button
+                                onClick={handleCloseClick}
+                                className="ml-1 p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors flex items-center justify-center cursor-pointer"
+                                title="Collapse Menu"
+                            >
+                                <ChevronLeft size={18} />
+                            </button>
+                        </li>
                     </ul>
-                </div>
+                </motion.div>
+
                 <button className="mobile-menu-button mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     <span className="hamburger-line" />
                     <span className="hamburger-line" />
                 </button>
-            </nav>
+            </motion.nav>
 
             <div className="mobile-menu-popover mobile-only" style={{ ...cssVars, visibility: isMobileMenuOpen ? 'visible' : 'hidden', opacity: isMobileMenuOpen ? 1 : 0 }}>
                 <ul className="mobile-menu-list">
@@ -139,5 +174,8 @@ const PillNav = ({
             </div>
         </div>
     );
+
+    return navContent;
 };
+
 export default PillNav;

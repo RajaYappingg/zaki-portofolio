@@ -10,15 +10,16 @@ import Footer from './components/Footer';
 function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black relative font-sans overflow-x-hidden">
+      <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black relative font-sans">
+        <Navbar />
+
         {/* Modern Clean AMOLED Background with Subtle Grid & Ambient White Radial Glow */}
         <div className="fixed inset-0 z-0 bg-black amoled-grid pointer-events-none">
           <div className="absolute inset-0 amoled-glow pointer-events-none" />
         </div>
 
         <div className="relative z-10 flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow pt-16">
             <Routes>
               <Route path="/" element={<Hero />} />
               <Route path="/skills" element={<Skills />} />

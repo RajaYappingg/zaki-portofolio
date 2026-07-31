@@ -1,29 +1,35 @@
 .pill-nav-container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 2rem;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  pointer-events: none;
-  /* Allow clicking through the container around the nav */
+  display: flex !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 2rem !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+  margin: 0 !important;
 }
 
 .pill-nav {
   pointer-events: auto;
-  background-color: var(--pill-bg, rgba(12, 12, 12, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #000000 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
-  padding: 0.45rem 1.1rem 0.45rem 0.6rem;
+  padding: 0.4rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.95), 0 0 24px rgba(255, 255, 255, 0.05);
+  gap: 0.5rem;
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   white-space: nowrap;
   max-width: fit-content;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pill-nav.is-expanded {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.15);
 }
 
 .pill-logo {
