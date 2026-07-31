@@ -50,9 +50,9 @@ const Contact = () => {
     ];
 
     const transformStyles = [
-        "rotate(-5deg) translate(-150px)",
-        "rotate(0deg)",
-        "rotate(5deg) translate(150px)"
+        "rotate(-5deg) translate(-190px)",
+        "rotate(0deg) translate(0px)",
+        "rotate(5deg) translate(190px)"
     ];
 
     return (
@@ -75,16 +75,16 @@ const Contact = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="relative w-full flex justify-center mb-16"
+                    className="relative w-full flex justify-center mb-16 overflow-x-auto sm:overflow-visible py-4"
                 >
                     <BounceCards
                         className="custom-bounce-cards"
                         items={socialCards}
-                        containerWidth={600}
+                        containerWidth={750}
                         containerHeight={400}
-                        animationDelay={0.5}
-                        animationStagger={0.1}
-                        easeType="elastic.out(1, 0.5)"
+                        animationDelay={0.3}
+                        animationStagger={0.08}
+                        easeType="elastic.out(1, 0.8)"
                         transformStyles={transformStyles}
                         enableHover={true}
                     />

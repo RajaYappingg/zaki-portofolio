@@ -5,19 +5,17 @@ export default function BounceCards({
   className = '',
   images = [],
   items = [],
-  containerWidth = 400,
+  containerWidth = 700,
   containerHeight = 400,
   animationDelay = 0.5,
   animationStagger = 0.06,
   easeType = 'elastic.out(1, 0.8)',
   transformStyles = [
-    'rotate(10deg) translate(-170px)',
-    'rotate(5deg) translate(-85px)',
-    'rotate(-3deg)',
-    'rotate(-10deg) translate(85px)',
-    'rotate(2deg) translate(170px)'
+    'rotate(-5deg) translate(-180px)',
+    'rotate(0deg) translate(0px)',
+    'rotate(5deg) translate(180px)'
   ],
-  enableHover = false
+  enableHover = true
 }) {
   useEffect(() => {
     gsap.fromTo('.card', { scale: 0 }, {
@@ -54,7 +52,6 @@ export default function BounceCards({
   const pushSiblings = hoveredIdx => {
     if (!enableHover) return;
 
-    // Use a simpler query or passed-in data length to robustly handle sibling count
     const total = items.length > 0 ? items.length : images.length;
 
     for (let i = 0; i < total; i++) {
@@ -72,7 +69,7 @@ export default function BounceCards({
           overwrite: 'auto'
         });
       } else {
-        const offsetX = i < hoveredIdx ? -160 : 160;
+        const offsetX = i < hoveredIdx ? -140 : 140;
         const pushedTransform = getPushedTransform(baseTransform, offsetX);
 
         const distance = Math.abs(hoveredIdx - i);
@@ -119,11 +116,10 @@ export default function BounceCards({
       {data.map((item, idx) => (
         <div
           key={idx}
-          className={`card card-${idx} absolute w-[280px] aspect-square border-8 border-white rounded-[30px] overflow-hidden cursor-pointer`}
+          className={`card card-${idx} absolute w-[260px] sm:w-[280px] aspect-square border-4 border-zinc-800 rounded-[30px] overflow-hidden cursor-pointer shadow-[0_12px_40px_rgba(0,0,0,0.8)] hover:border-zinc-500 transition-colors`}
           style={{
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
             transform: transformStyles[idx] || 'none',
-            zIndex: 10 // Ensure interactivity
+            zIndex: 10
           }}
           onMouseEnter={() => pushSiblings(idx)}
           onMouseLeave={resetSiblings}

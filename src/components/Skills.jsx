@@ -1,60 +1,159 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import {
-    Code,
     Layout,
+    PenTool,
     Server,
     Smartphone,
-    Database,
-    PenTool,
-    Terminal,
+    Zap,
     Cpu,
-    Globe,
+    Atom,
+    Code2,
+    Wind,
     Layers,
+    Sparkles,
     Box,
-    Zap
+    Figma,
+    MonitorSmartphone,
+    Component,
+    GitBranch,
+    Terminal,
+    Database,
+    Flame,
+    Globe,
+    Gauge,
+    Search,
+    Binary,
+    Blocks,
+    Activity,
+    SmartphoneNfc,
+    Workflow,
+    ShieldCheck
 } from 'lucide-react';
 
 const skillsData = [
     {
         title: "Frontend Development",
         icon: Layout,
-        description: "Building immersive and responsive user interfaces with modern React ecosystem.",
-        skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Framer Motion", "Three.js"]
+        skills: [
+            { name: "React", icon: Atom, color: "#61DAFB", rotate: 180, scale: 1.25, isSpin: true },
+            { name: "TypeScript", icon: Code2, color: "#3178C6", rotate: -12, scale: 1.3 },
+            { name: "Tailwind CSS", icon: Wind, color: "#38BDF8", rotate: 15, scale: 1.25 },
+            { name: "Next.js", icon: Layers, color: "#FFFFFF", rotate: -15, scale: 1.2 },
+            { name: "Framer Motion", icon: Sparkles, color: "#FF0055", rotate: 45, scale: 1.3 },
+            { name: "Three.js", icon: Box, color: "#A855F7", rotate: 90, scale: 1.25 }
+        ]
     },
     {
         title: "UI/UX Design",
         icon: PenTool,
-        description: "Crafting intuitive and accessible digital experiences with a focus on aesthetics.",
-        skills: ["Figma", "Responsive Design", "Prototyping", "Wireframing", "Accessibility", "Design Systems"]
+        skills: [
+            { name: "Figma", icon: Figma, color: "#F24E1E", rotate: 20, scale: 1.3 },
+            { name: "Responsive Design", icon: MonitorSmartphone, color: "#3B82F6", rotate: -10, scale: 1.2 },
+            { name: "Prototyping", icon: PenTool, color: "#EC4899", rotate: -25, scale: 1.25 },
+            { name: "Wireframing", icon: Workflow, color: "#06B6D4", rotate: 15, scale: 1.2 },
+            { name: "Accessibility", icon: ShieldCheck, color: "#10B981", rotate: -15, scale: 1.3 },
+            { name: "Design Systems", icon: Component, color: "#8B5CF6", rotate: 90, scale: 1.25 }
+        ]
     },
     {
         title: "Backend & Tools",
         icon: Server,
-        description: "Robust server-side logic and efficient development workflows.",
-        skills: ["Node.js", "Git", "VS Code", "PostgreSQL", "Firebase", "Vercel"]
+        skills: [
+            { name: "Node.js", icon: Server, color: "#5FA04E", rotate: -12, scale: 1.25 },
+            { name: "Git", icon: GitBranch, color: "#F05032", rotate: 30, scale: 1.3 },
+            { name: "VS Code", icon: Terminal, color: "#007ACC", rotate: 15, scale: 1.2 },
+            { name: "PostgreSQL", icon: Database, color: "#4169E1", rotate: -15, scale: 1.25 },
+            { name: "Firebase", icon: Flame, color: "#FFCA28", rotate: 12, scale: 1.35 },
+            { name: "Vercel", icon: Globe, color: "#FFFFFF", rotate: 180, scale: 1.25 }
+        ]
     },
     {
         title: "Mobile Development",
         icon: Smartphone,
-        description: "Extending web capabilities to mobile platforms.",
-        skills: ["React Native", "Expo", "PWA", "Mobile-First Design"]
+        skills: [
+            { name: "React Native", icon: Atom, color: "#61DAFB", rotate: 180, scale: 1.25, isSpin: true },
+            { name: "Expo", icon: Zap, color: "#FFFFFF", rotate: 25, scale: 1.3 },
+            { name: "PWA", icon: SmartphoneNfc, color: "#A855F7", rotate: -15, scale: 1.25 },
+            { name: "Mobile-First Design", icon: Smartphone, color: "#3B82F6", rotate: 12, scale: 1.2 }
+        ]
     },
     {
         title: "Performance",
         icon: Zap,
-        description: "Optimizing applications for speed, SEO, and user retention.",
-        skills: ["Core Web Vitals", "SEO Optimization", "Lazy Loading", "Code Splitting"]
+        skills: [
+            { name: "Core Web Vitals", icon: Gauge, color: "#10B981", rotate: 45, scale: 1.25 },
+            { name: "SEO Optimization", icon: Search, color: "#F59E0B", rotate: -20, scale: 1.3 },
+            { name: "Lazy Loading", icon: Activity, color: "#EC4899", rotate: 15, scale: 1.2 },
+            { name: "Code Splitting", icon: Blocks, color: "#6366F1", rotate: -30, scale: 1.25 }
+        ]
     },
     {
         title: "Currently Learning",
         icon: Cpu,
-        description: "Expanding horizons with low-level programming and new paradigms.",
-        skills: ["Rust", "WebAssembly", "System Architecture"]
+        skills: [
+            { name: "Rust", icon: Cpu, color: "#DEA584", rotate: 90, scale: 1.3 },
+            { name: "WebAssembly", icon: Binary, color: "#654FF0", rotate: -20, scale: 1.25 },
+            { name: "System Architecture", icon: Blocks, color: "#06B6D4", rotate: 30, scale: 1.25 }
+        ]
     }
 ];
 
-const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
+const TechIconBadge = ({ skill }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const SkillIcon = skill.icon;
+    return (
+        <motion.div
+            whileHover={{ scale: 1.22, y: -4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="relative w-11 h-11 rounded-2xl bg-zinc-900/90 border border-zinc-800/90 flex items-center justify-center shadow-lg cursor-pointer flex-shrink-0 transition-all duration-300 hover:bg-white hover:border-white"
+            style={{
+                boxShadow: isHovered ? '0 6px 22px rgba(255,255,255,0.45)' : `0 0 15px ${skill.color}25`
+            }}
+            title={skill.name}
+        >
+            <motion.div
+                animate={isHovered ? { rotate: skill.rotate || 15, scale: skill.scale || 1.2 } : { rotate: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 12 }}
+            >
+                <SkillIcon
+                    size={20}
+                    style={{ color: isHovered ? '#000000' : skill.color }}
+                    className={`transition-colors duration-200 ${skill.isSpin ? 'animate-spin-slow' : ''}`}
+                />
+            </motion.div>
+        </motion.div>
+    );
+};
+
+const SkillTag = ({ skill }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const SkillIcon = skill.icon;
+    return (
+        <motion.div
+            whileHover={{ scale: 1.06, y: -2 }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-zinc-200 bg-zinc-900/90 rounded-xl border border-zinc-800/90 hover:border-white hover:bg-white hover:text-black transition-all duration-200 shadow-sm cursor-pointer"
+        >
+            <motion.div
+                animate={isHovered ? { rotate: skill.rotate || 15, scale: skill.scale || 1.2 } : { rotate: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 12 }}
+            >
+                <SkillIcon
+                    size={15}
+                    style={{ color: isHovered ? '#000000' : skill.color }}
+                    className={`transition-colors duration-200 ${skill.isSpin ? 'animate-spin-slow' : ''}`}
+                />
+            </motion.div>
+            <span>{skill.name}</span>
+        </motion.div>
+    );
+};
+
+const SpotlightCard = ({ title, icon: Icon, description, skills, index, delay }) => {
     const divRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
     const position = { x: useMotionValue(0), y: useMotionValue(0) };
@@ -65,6 +164,8 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
         position.x.set(e.clientX - rect.left);
         position.y.set(e.clientY - rect.top);
     };
+
+    const formattedIndex = String(index + 1).padStart(2, '0');
 
     return (
         <motion.div
@@ -78,7 +179,7 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay }}
-            className="relative w-full h-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-xl group hover:border-zinc-600 transition-colors duration-300"
+            className="relative w-full h-full overflow-hidden rounded-3xl border border-zinc-800/90 bg-zinc-950/90 backdrop-blur-xl group hover:border-zinc-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.07)] transition-all duration-500"
         >
             {/* White Monochrome Spotlight Effect */}
             <motion.div
@@ -86,35 +187,40 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
                 style={{
                     background: useMotionTemplate`
             radial-gradient(
-              650px circle at ${position.x}px ${position.y}px,
-              rgba(255, 255, 255, 0.1),
+              600px circle at ${position.x}px ${position.y}px,
+              rgba(255, 255, 255, 0.12),
               transparent 80%
             )
           `
                 }}
             />
 
-            <div className="relative h-full p-6 flex flex-col z-10">
-                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
-                    <Icon size={24} />
+            <div className="relative h-full p-7 flex flex-col z-10">
+                {/* Header Row: Icon & Index Badge */}
+                <div className="flex items-center justify-between mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 text-white flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:border-white group-hover:scale-110 shadow-lg transition-all duration-300">
+                        <Icon size={26} />
+                    </div>
+                    <span className="font-mono text-xs font-bold tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors border border-zinc-800/80 px-2.5 py-1 rounded-full bg-zinc-900/50">
+                        {formattedIndex}
+                    </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-zinc-200 transition-colors">
+                <h3 className="text-2xl font-extrabold text-white mb-6 group-hover:text-zinc-100 transition-colors tracking-tight">
                     {title}
                 </h3>
 
-                <p className="text-zinc-400 text-sm mb-6 flex-grow leading-relaxed font-light">
-                    {description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-auto">
+                {/* Animated Tech Stack Visual Badges Row with Vivid Colors & Smart Hover Contrast */}
+                <div className="flex items-center gap-3 mb-6 overflow-x-auto py-2 no-scrollbar">
                     {skills.map((skill, idx) => (
-                        <span
-                            key={idx}
-                            className="px-3 py-1 text-xs font-medium text-zinc-300 bg-zinc-900 rounded-full border border-zinc-800 group-hover:bg-zinc-800 group-hover:border-zinc-700 group-hover:text-white transition-all duration-300"
-                        >
-                            {skill}
-                        </span>
+                        <TechIconBadge key={idx} skill={skill} />
+                    ))}
+                </div>
+
+                {/* Skill Tags with Animated Tech Icons & Smart Hover Contrast */}
+                <div className="flex flex-wrap gap-2.5 mt-auto pt-5 border-t border-zinc-800/60">
+                    {skills.map((skill, idx) => (
+                        <SkillTag key={idx} skill={skill} />
                     ))}
                 </div>
             </div>
@@ -130,7 +236,7 @@ const Skills = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500"
+                        className="text-4xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500 tracking-tight"
                     >
                         Technical Proficiency
                     </motion.h2>
@@ -138,16 +244,17 @@ const Skills = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-zinc-400 font-light"
+                        className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed"
                     >
                         A comprehensive look at the technologies, tools, and methodologies I use to build scalable digital solutions.
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillsData.map((category, index) => (
                         <SpotlightCard
                             key={index}
+                            index={index}
                             {...category}
                             delay={index * 0.1}
                         />
