@@ -104,23 +104,23 @@ const TechIconBadge = ({ skill }) => {
     const SkillIcon = skill.icon;
     return (
         <motion.div
-            whileHover={{ scale: 1.2, y: -3 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            whileHover={{ scale: 1.14, y: -2 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 15 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative w-9 h-9 rounded-xl bg-zinc-900/90 border border-zinc-800/90 flex items-center justify-center shadow-md cursor-pointer flex-shrink-0 transition-colors duration-300 hover:bg-white hover:border-white"
+            className="relative w-9 h-9 rounded-xl bg-zinc-900/90 border border-zinc-800/90 flex items-center justify-center cursor-pointer flex-shrink-0 transition-colors duration-200 hover:bg-zinc-800/90 hover:border-zinc-500"
             style={{
-                boxShadow: isHovered ? '0 4px 18px rgba(255,255,255,0.4)' : `0 0 12px ${skill.color}25`
+                boxShadow: isHovered ? `0 0 16px ${skill.color}45` : `0 0 10px ${skill.color}15`
             }}
             title={skill.name}
         >
             <motion.div
-                animate={isHovered ? { rotate: skill.rotate || 15, scale: skill.scale || 1.2 } : { rotate: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 12 }}
+                animate={isHovered ? { rotate: skill.rotate || 15, scale: 1.12 } : { rotate: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 14 }}
             >
                 <SkillIcon
                     size={17}
-                    style={{ color: isHovered ? '#000000' : skill.color }}
+                    style={{ color: skill.color }}
                     className={skill.isSpin ? 'animate-spin-slow' : ''}
                 />
             </motion.div>
@@ -133,18 +133,18 @@ const SkillTag = ({ skill }) => {
     const SkillIcon = skill.icon;
     return (
         <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
+            whileHover={{ scale: 1.03, y: -1 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-zinc-200 bg-zinc-900/90 rounded-lg border border-zinc-800/90 hover:border-white hover:bg-white hover:text-black transition-colors duration-200 shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-zinc-300 bg-zinc-900/80 rounded-lg border border-zinc-800/80 hover:border-zinc-600 hover:bg-zinc-800/80 hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
         >
             <motion.div
-                animate={isHovered ? { rotate: skill.rotate || 15, scale: skill.scale || 1.2 } : { rotate: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 12 }}
+                animate={isHovered ? { rotate: skill.rotate || 15, scale: 1.1 } : { rotate: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 14 }}
             >
                 <SkillIcon
                     size={13}
-                    style={{ color: isHovered ? '#000000' : skill.color }}
+                    style={{ color: skill.color }}
                     className={skill.isSpin ? 'animate-spin-slow' : ''}
                 />
             </motion.div>
@@ -178,7 +178,7 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, index, delay })
             initial={{ opacity: 0, y: 25, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.45, delay, ease: [0.215, 0.61, 0.355, 1] }}
-            className="relative w-full h-full overflow-hidden rounded-2xl border border-zinc-800/90 bg-zinc-950/90 backdrop-blur-xl group hover:border-zinc-400 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] transition-[border-color,box-shadow] duration-300"
+            className="relative w-full h-full overflow-hidden rounded-2xl border border-zinc-800/90 bg-zinc-950/90 backdrop-blur-xl group hover:border-zinc-600 hover:shadow-[0_0_20px_rgba(0,0,0,0.8)] transition-colors duration-300"
         >
             {/* White Monochrome Spotlight Effect */}
             <motion.div
@@ -186,8 +186,8 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, index, delay })
                 style={{
                     background: useMotionTemplate`
             radial-gradient(
-              500px circle at ${position.x}px ${position.y}px,
-              rgba(255, 255, 255, 0.1),
+              400px circle at ${position.x}px ${position.y}px,
+              rgba(255, 255, 255, 0.05),
               transparent 80%
             )
           `
@@ -201,7 +201,7 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, index, delay })
                         initial={{ scale: 0, rotate: -30 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: delay + 0.1, type: 'spring', stiffness: 350, damping: 16 }}
-                        className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 text-white flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:border-white shadow-md transition-colors duration-300"
+                        className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center group-hover:border-zinc-500 group-hover:text-white group-hover:scale-105 shadow-md transition-all duration-300"
                     >
                         <Icon size={20} />
                     </motion.div>
