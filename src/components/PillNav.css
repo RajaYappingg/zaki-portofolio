@@ -36,21 +36,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4.2rem;
+  height: 4.2rem;
   flex-shrink: 0;
   border-radius: 9999px;
-  background: #ffffff;
-  border: 2.5px solid rgba(255, 255, 255, 0.4);
-  padding: 2px;
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  transition: transform 0.3s ease;
 }
 
 .pill-logo:hover {
-  transform: scale(1.12);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-  border-color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: none;
 }
 
 .pill-logo img {
