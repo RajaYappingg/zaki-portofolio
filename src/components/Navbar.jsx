@@ -9,10 +9,10 @@ const Navbar = () => {
         <PillNav
             items={NAV_ITEMS}
             activeHref={location.pathname}
-            baseColor="#fff" // The circle color
-            pillColor="rgba(10, 10, 10, 0.6)" // The pill background
-            pillTextColor="#a5b4fc" // Indigo-300ish for text
-            hoveredPillTextColor="#000" // Text color when hovered (inside white circle)
+            baseColor="#ffffff" // Expanding hover circle (pure white)
+            pillColor="rgba(12, 12, 12, 0.9)" // Black AMOLED background
+            pillTextColor="#d4d4d8" // Zinc-300 text
+            hoveredPillTextColor="#000000" // Black text when hovered
             hideActiveOnIdle={true}
         />
     );

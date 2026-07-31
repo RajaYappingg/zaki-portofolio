@@ -7,20 +7,15 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Footer from './components/Footer';
 
-import FloatingLines from './components/FloatingLines';
-
 function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-black text-white selection:bg-indigo-500/30 relative">
-        <div className="fixed inset-0 z-0 opacity-60">
-          <FloatingLines
-            linesGradient={['#6366f1', '#a855f7', '#06b6d4']}
-            animationSpeed={0.5}
-            lineCount={[10]}
-            lineDistance={[2]}
-          />
+      <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black relative font-sans overflow-x-hidden">
+        {/* Modern Clean AMOLED Background with Subtle Grid & Ambient White Radial Glow */}
+        <div className="fixed inset-0 z-0 bg-black amoled-grid pointer-events-none">
+          <div className="absolute inset-0 amoled-glow pointer-events-none" />
         </div>
+
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">

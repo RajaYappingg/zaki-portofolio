@@ -16,9 +16,9 @@ const About = () => {
     ];
 
     const stackCards = images.map((img, i) => (
-        <div key={i} className="w-full h-full relative group overflow-hidden bg-gray-900 border border-white/10">
-            <img src={img} alt={`About ${i}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+        <div key={i} className="w-full h-full relative group overflow-hidden bg-zinc-950 border border-zinc-800 rounded-2xl">
+            <img src={img} alt={`About ${i}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" />
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
         </div>
     ));
 
@@ -26,7 +26,7 @@ const About = () => {
         <section id="about" className="py-20 w-full min-h-screen pt-32 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">About Me</h2>
+                    <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500">About Me</h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -45,24 +45,24 @@ const About = () => {
 
                     {/* Text Content Column (Right) */}
                     <div className="space-y-6">
-                        <div className="bg-neutral-900/50 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
-                            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                        <div className="bg-zinc-950/80 p-8 rounded-3xl border border-zinc-800 backdrop-blur-xl">
+                            <p className="text-zinc-300 leading-relaxed text-lg mb-6 font-light">
                                 Hello! I'm Zaki, a dedicated web developer based in Indonesia. I enjoy building things that live on the internet. My interest in web development started back when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS is pretty fun!
                             </p>
-                            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                            <p className="text-zinc-300 leading-relaxed text-lg mb-6 font-light">
                                 Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge corporation, and a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
                             </p>
-                            <p className="text-gray-300 leading-relaxed text-lg">
+                            <p className="text-zinc-300 leading-relaxed text-lg font-light">
                                 When I'm not at the computer, I'm usually hanging out with my friends, reading, or running around searching for new coffee shops.
                             </p>
                         </div>
 
                         {/* Experience List */}
-                        <div className="bg-neutral-900/50 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
-                            <h3 className="text-xl font-semibold text-white mb-4">Experience</h3>
-                            <ul className="space-y-3 text-gray-400">
+                        <div className="bg-zinc-950/80 p-6 rounded-2xl border border-zinc-800 backdrop-blur-xl">
+                            <h3 className="text-xl font-bold text-white mb-4">Experience</h3>
+                            <ul className="space-y-3 text-zinc-400 font-light">
                                 <li className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-white rounded-full"></span>
                                     <span>Frontend Developer @ Skanida Apps Mobile</span>
                                 </li>
                             </ul>

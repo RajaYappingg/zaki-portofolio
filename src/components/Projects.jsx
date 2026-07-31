@@ -12,8 +12,8 @@ const projects = [
         link: "#",
         github: "https://github.com/RajaYappingg/skanida-apps-mobile",
         featured: true,
-        borderColor: '#4F46E5', // Indigo
-        gradient: 'linear-gradient(145deg, #1e1b4b, #000)', // Dark Indigo to Black
+        borderColor: '#ffffff',
+        gradient: 'linear-gradient(145deg, #18181b, #000000)',
         image: skanidaPreview
     },
     {
@@ -23,8 +23,8 @@ const projects = [
         link: "#",
         github: "#",
         featured: false,
-        borderColor: '#10B981', // Emerald
-        gradient: 'linear-gradient(145deg, #064e3b, #000)', // Dark Emerald to Black
+        borderColor: '#d4d4d8',
+        gradient: 'linear-gradient(145deg, #18181b, #000000)',
     },
     {
         title: "Coming Soon",
@@ -33,8 +33,8 @@ const projects = [
         link: "#",
         github: "#",
         featured: false,
-        borderColor: '#F59E0B', // Amber
-        gradient: 'linear-gradient(145deg, #78350f, #000)', // Dark Amber to Black
+        borderColor: '#a1a1aa',
+        gradient: 'linear-gradient(145deg, #18181b, #000000)',
     }
 ];
 
@@ -107,8 +107,8 @@ const Projects = () => {
                 transition={{ duration: 0.5 }}
                 className="mb-16"
             >
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Selected Works</h2>
-                <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+                <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500">Selected Works</h2>
+                <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed font-light">
                     A collection of projects exploring performance, interaction design, and robust engineering.
                 </p>
             </motion.div>
@@ -135,9 +135,9 @@ const Projects = () => {
                             onMouseMove={handleCardMove}
                             style={{
                                 '--card-border': project.borderColor,
-                                '--spotlight-color': 'rgba(255,255,255,0.2)'
+                                '--spotlight-color': 'rgba(255,255,255,0.15)'
                             }}
-                            className="group flex flex-col bg-white/5 border-2 border-transparent rounded-2xl overflow-hidden hover:border-[var(--card-border)] transition-colors duration-500 relative"
+                            className="group flex flex-col bg-zinc-950/90 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-500 transition-colors duration-500 relative"
                         >
                             {/* Card Background Gradient */}
                             <div
@@ -154,7 +154,7 @@ const Projects = () => {
                             />
 
                             {/* Project Preview Area */}
-                            <div className="aspect-video bg-neutral-900/50 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 border-b border-white/5">
+                            <div className="aspect-video bg-black relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 border-b border-zinc-800">
                                 {project.image ? (
                                     <img
                                         src={project.image}
@@ -163,33 +163,33 @@ const Projects = () => {
                                     />
                                 ) : (
                                     <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-white/20 text-lg font-medium tracking-widest uppercase">Preview</span>
+                                        <span className="text-zinc-600 text-lg font-medium tracking-widest uppercase">Preview</span>
                                     </div>
                                 )}
                             </div>
 
                             <div className="p-8 flex flex-col flex-grow relative z-10">
                                 <div className="flex items-start justify-between mb-4">
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-indigo-200 transition-colors">
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">
                                         {project.title}
                                     </h3>
                                     <div className="flex gap-3">
-                                        <a href={project.github} className="text-gray-400 hover:text-white transition-colors" title="View Code">
+                                        <a href={project.github} className="text-zinc-400 hover:text-white transition-colors" title="View Code">
                                             <Github className="w-5 h-5" />
                                         </a>
-                                        <a href={project.link} className="text-gray-400 hover:text-white transition-colors" title="Live Demo">
+                                        <a href={project.link} className="text-zinc-400 hover:text-white transition-colors" title="Live Demo">
                                             <ExternalLink className="w-5 h-5" />
                                         </a>
                                     </div>
                                 </div>
 
-                                <p className="text-gray-400 leading-relaxed mb-6 flex-grow group-hover:text-gray-200 transition-colors">
+                                <p className="text-zinc-400 font-light leading-relaxed mb-6 flex-grow group-hover:text-zinc-300 transition-colors">
                                     {project.description}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.tags.map((tag, i) => (
-                                        <span key={i} className="px-3 py-1 text-xs font-medium rounded-full bg-white/5 text-gray-300 border border-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
+                                        <span key={i} className="px-3 py-1 text-xs font-medium rounded-full bg-zinc-900 text-zinc-300 border border-zinc-800 group-hover:bg-zinc-800 group-hover:border-zinc-700 transition-all">
                                             {tag}
                                         </span>
                                     ))}

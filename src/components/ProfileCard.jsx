@@ -9,19 +9,19 @@ const ProfileCard = ({ title, description, children, delay = 0 }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay }}
             whileHover={{ scale: 1.02 }}
-            className="group relative bg-black rounded-2xl p-1 overflow-hidden"
+            className="group relative bg-black rounded-2xl p-[1px] overflow-hidden border border-zinc-800 hover:border-zinc-500 transition-colors"
         >
-            {/* Animated Gradient Border */}
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Animated Monochrome Gradient Border */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-zinc-300 to-zinc-600 opacity-10 group-hover:opacity-60 transition-opacity duration-500" />
 
             {/* Inner Content */}
-            <div className="relative h-full bg-neutral-950 rounded-xl p-6 flex flex-col z-10">
+            <div className="relative h-full bg-zinc-950 rounded-xl p-6 flex flex-col z-10 backdrop-blur-xl">
                 <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-300">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-zinc-400 transition-all duration-300">
                         {title}
                     </h3>
                     {description && (
-                        <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+                        <p className="text-zinc-400 text-sm mt-2 leading-relaxed font-light">
                             {description}
                         </p>
                     )}
@@ -33,7 +33,7 @@ const ProfileCard = ({ title, description, children, delay = 0 }) => {
             </div>
 
             {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 group-hover:duration-200" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-white to-zinc-400 rounded-2xl blur-lg opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
         </motion.div>
     );
 };

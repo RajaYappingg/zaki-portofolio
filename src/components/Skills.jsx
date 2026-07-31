@@ -78,16 +78,16 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay }}
-            className="relative w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md group"
+            className="relative w-full h-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-xl group hover:border-zinc-600 transition-colors duration-300"
         >
-            {/* Spotlight Effect */}
+            {/* White Monochrome Spotlight Effect */}
             <motion.div
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
                 style={{
                     background: useMotionTemplate`
             radial-gradient(
               650px circle at ${position.x}px ${position.y}px,
-              rgba(99, 102, 241, 0.15),
+              rgba(255, 255, 255, 0.1),
               transparent 80%
             )
           `
@@ -95,15 +95,15 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
             />
 
             <div className="relative h-full p-6 flex flex-col z-10">
-                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
                     <Icon size={24} />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-zinc-200 transition-colors">
                     {title}
                 </h3>
 
-                <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                <p className="text-zinc-400 text-sm mb-6 flex-grow leading-relaxed font-light">
                     {description}
                 </p>
 
@@ -111,7 +111,7 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
                     {skills.map((skill, idx) => (
                         <span
                             key={idx}
-                            className="px-3 py-1 text-xs font-medium text-indigo-200 bg-indigo-500/10 rounded-full border border-indigo-500/20 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/30 transition-all duration-300"
+                            className="px-3 py-1 text-xs font-medium text-zinc-300 bg-zinc-900 rounded-full border border-zinc-800 group-hover:bg-zinc-800 group-hover:border-zinc-700 group-hover:text-white transition-all duration-300"
                         >
                             {skill}
                         </span>
@@ -125,16 +125,12 @@ const SpotlightCard = ({ title, icon: Icon, description, skills, delay }) => {
 const Skills = () => {
     return (
         <section className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden">
-            {/* Background Decor - simple glows */}
-            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-
             <div className="relative z-10 space-y-16">
                 <div className="text-center max-w-3xl mx-auto space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-indigo-400"
+                        className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500"
                     >
                         Technical Proficiency
                     </motion.h2>
@@ -142,7 +138,7 @@ const Skills = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-gray-400"
+                        className="text-lg text-zinc-400 font-light"
                     >
                         A comprehensive look at the technologies, tools, and methodologies I use to build scalable digital solutions.
                     </motion.p>
