@@ -30,7 +30,7 @@ const Hero = () => {
 
                 <div className="text-5xl sm:text-7xl font-bold tracking-tight text-white mb-8 pointer-events-auto leading-tight">
                     <SplitText
-                        text="Frontend Developer"
+                        text="Fullstack Developer"
                         className=""
                         delay={60}
                         from={{ opacity: 0, y: 50 }}

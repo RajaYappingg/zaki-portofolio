@@ -63,7 +63,7 @@ const About = () => {
                             <ul className="space-y-3 text-zinc-400 font-light">
                                 <li className="flex items-center gap-3">
                                     <span className="w-2 h-2 bg-white rounded-full"></span>
-                                    <span>Frontend Developer @ Skanida Apps Mobile</span>
+                                    <span>Fullstack Developer</span>
                                 </li>
                             </ul>
                         </div>
