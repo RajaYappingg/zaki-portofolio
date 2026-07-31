@@ -28,6 +28,20 @@ const PillNav = ({
     const logoImgRef = useRef(null);
     const navItemsRef = useRef(null);
 
+    const logoRotationRef = useRef(0);
+
+    const handleLogoEnter = () => {
+        logoRotationRef.current += 360;
+        if (logoImgRef.current) {
+            gsap.to(logoImgRef.current, {
+                rotate: logoRotationRef.current,
+                duration: 0.75,
+                ease: 'back.out(1.4)',
+                overwrite: 'auto'
+            });
+        }
+    };
+
     // Helper: Normalize
     const normalizePath = (path) => path?.replace(/\/+$/, '') || '/';
 
@@ -74,7 +88,12 @@ const PillNav = ({
                 onMouseLeave={handleNavLeave}
             >
                 {logo && (
-                    <Link className="pill-logo" to="/" ref={logoRef}>
+                    <Link
+                        className="pill-logo"
+                        to="/"
+                        ref={logoRef}
+                        onMouseEnter={handleLogoEnter}
+                    >
                         <img src={logo} alt={logoAlt} ref={logoImgRef} />
                     </Link>
                 )}

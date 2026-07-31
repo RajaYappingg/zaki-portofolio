@@ -26,18 +26,6 @@
   max-width: fit-content;
 }
 
-@keyframes logo-cute-spin {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.12);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-
 .pill-logo {
   display: flex;
   align-items: center;
@@ -64,11 +52,6 @@
   height: 100%;
   object-fit: contain;
   border-radius: 9999px;
-  transition: transform 0.3s ease;
-}
-
-.pill-logo:hover img {
-  animation: logo-cute-spin 1.2s linear infinite;
 }
 
 .pill-nav-items {
